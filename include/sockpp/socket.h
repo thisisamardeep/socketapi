@@ -34,6 +34,8 @@ namespace sockpp {
 
         explicit socket(socket_t h) noexcept : handle_{h} {
         }
+        socket_t handle() const { return handle_; }
+
 
         explicit operator bool() const {
             return handle_ != INVALID_SOCKET;

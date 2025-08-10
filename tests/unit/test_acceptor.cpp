@@ -46,13 +46,7 @@
 #include "sockpp/socket.h"
 
 using namespace std;
-//using namespace sockpp;
 
-TEST_CASE("acceptor default constructor", "[acceptor]") {
-    //acceptor sock;
-    //REQUIRE(!sock);
-    // REQUIRE(!sock.is_open());
-}
 
 TEST_CASE("acceptor handle constructor", "[acceptor]") {
     constexpr auto HANDLE = sockpp::socket_t(3);
@@ -60,7 +54,12 @@ TEST_CASE("acceptor handle constructor", "[acceptor]") {
     SECTION("valid handle") {
         sockpp::acceptor sock(HANDLE);
         REQUIRE(sock);
+        REQUIRE(HANDLE==sock.handle());
 
+    }
+    SECTION("invalid handle") {
+        sockpp::acceptor sock(sockpp::INVALID_SOCKET);
+        REQUIRE(!sock);
     }
 
 }
