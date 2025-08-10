@@ -57,7 +57,11 @@
 
 #define CATCH_CONFIG_RUNNER
 #include "catch2_version.h"
+namespace p123 {
+    class Amar {
 
+    };
+}
 int main(int argc, char* argv[]) {
     // global setup...
     //sockpp::initialize();
