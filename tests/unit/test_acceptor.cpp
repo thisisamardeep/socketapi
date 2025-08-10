@@ -43,6 +43,7 @@
 #include "catch2_version.h"
 #include "sockpp/acceptor.h"
 #include "sockpp/inet_address.h"
+#include "sockpp/socket.h"
 
 using namespace std;
 //using namespace sockpp;
@@ -50,5 +51,16 @@ using namespace std;
 TEST_CASE("acceptor default constructor", "[acceptor]") {
     //acceptor sock;
     //REQUIRE(!sock);
-   // REQUIRE(!sock.is_open());
+    // REQUIRE(!sock.is_open());
+}
+
+TEST_CASE("acceptor handle constructor", "[acceptor]") {
+    constexpr auto HANDLE = sockpp::socket_t(3);
+
+    SECTION("valid handle") {
+        sockpp::acceptor sock(HANDLE);
+        REQUIRE(sock);
+
+    }
+
 }

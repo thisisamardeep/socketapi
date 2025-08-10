@@ -3,6 +3,9 @@
 
 
 namespace sockpp {
+    typedef int socket_t;
+    const socket_t INVALID_SOCKET = -1;
+
     class socket_initializer {
     private:
         socket_initializer();
@@ -22,6 +25,20 @@ namespace sockpp {
     };
 
     void initialize();
+
+    class socket {
+        socket_t handle_{INVALID_SOCKET};
+
+    public:
+        socket() = default;
+
+        explicit socket(socket_t h) noexcept : handle_{h} {
+        }
+
+        explicit operator bool() const {
+            return handle_ != INVALID_SOCKET;
+        }
+    };
 }
 
 

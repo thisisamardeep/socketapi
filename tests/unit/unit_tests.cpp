@@ -64,7 +64,7 @@ namespace p123 {
 }
 int main(int argc, char* argv[]) {
     // global setup...
-    //sockpp::initialize();
+    sockpp::initialize();
 
     int result = Catch::Session().run(argc, argv);
 
