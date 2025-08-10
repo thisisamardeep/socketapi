@@ -1,0 +1,19 @@
+
+#ifndef __sockpp_version_h
+#define __sockpp_version_h
+
+#include <string>
+
+
+namespace sockpp {
+
+    constexpr int SOCKPP_VERSION_MAJOR = @PROJECT_VERSION_MAJOR@;
+    constexpr int SOCKPP_VERSION_MINOR = @PROJECT_VERSION_MINOR@;
+    constexpr int SOCKPP_VERSION_PATCH = @PROJECT_VERSION_PATCH@;
+
+    const std::string SOCKPP_VERSION { "v@PROJECT_VERSION@" };
+
+}
+
+#endif
+
