@@ -9,7 +9,6 @@
  *
  * @date March 2021
  */
-
 // --------------------------------------------------------------------------
 // This file is part of the "sockpp" C++ socket library.
 //
@@ -43,21 +42,14 @@
 // NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // --------------------------------------------------------------------------
-
 #ifndef __sockpp_can_frame_h
 #define __sockpp_can_frame_h
-
 #include <linux/can.h>
-
 #include <cstring>
 #include <string>
-
 #include "sockpp/platform.h"
-
 namespace sockpp {
-
 /////////////////////////////////////////////////////////////////////////////
-
 /**
  * Class that represents a Linux SocketCAN frame.
  * This inherits from the Linux CAN frame struct, just providing easier
@@ -66,10 +58,8 @@ namespace sockpp {
 class can_frame : public ::can_frame {
   /** The base class is the C library CAN frame struct. */
   using base = ::can_frame;
-
   /** The size of the underlying address struct, in bytes */
   static constexpr size_t SZ = sizeof(::can_frame);
-
 public:
   /**
    * Constructs an empty frame.
@@ -100,8 +90,6 @@ public:
    */
   can_frame(const base &frame) : base{frame} {}
 };
-
 /////////////////////////////////////////////////////////////////////////////
 } // namespace sockpp
-
 #endif // __sockpp_can_frame_h

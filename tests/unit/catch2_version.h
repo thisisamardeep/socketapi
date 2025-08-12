@@ -33,10 +33,8 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // --------------------------------------------------------------------------
 //
-
 #ifndef __catch2_version_h
 #define __catch2_version_h
-
 #ifdef CATCH2_V2
 // For Catch2 v2.x
 #include "catch2/catch.hpp"
@@ -44,5 +42,4 @@
 // For Catch2 v3.x
 #include "catch2/catch_all.hpp"
 #endif
-
 #endif // __catch2_version_h
