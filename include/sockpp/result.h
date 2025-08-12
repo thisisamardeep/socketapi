@@ -7,46 +7,38 @@
 #include "sockpp/platform.h"
 #include "sockpp/types.h"
 
-
 namespace sockpp {
-    struct none {
-    };
+struct none {};
 
+template <typename T = none> class result {
+private:
+  T val_{};
+  error_code err_{};
 
-    template<typename T = none>
-    class result {
-    private:
-        T val_{};
-        error_code err_{};
+public:
+  result() = default;
 
-    public:
-        result() = default;
+  result(const T &val) {}
 
+  result(T &&val) : val_{std::move(val)} {}
 
-        result(const T &val) {
-        }
+  const T &value() const { return val_; };
 
-        result(T &&val) : val_{std::move(val)} {
-        }
+  explicit operator bool() const { return !bool(err_); }
 
-        const T &value() const { return val_; };
+  const error_code &error() const { return err_; }
+  result(const error_code &err) : err_{err} {}
+  result(error_code &&err) : err_{std::move(err)} {}
 
+  static int get_last_errno() {
+    int err = errno;
+    return err;
+  }
 
-        explicit operator bool() const { return !bool(err_); }
-
-        const error_code& error() const { return err_; }
-        result(const error_code& err) : err_{err} {}
-        result(error_code&& err) : err_{std::move(err)} {}
-
-        static int get_last_errno() {
-            int err = errno;
-            return err;
-        }
-
-        static error_code last_error() {
-            int err = get_last_errno();
-            return error_code{err, std::system_category()};
-        }
-    };
-}
-#endif  // __sockpp_result_h
+  static error_code last_error() {
+    int err = get_last_errno();
+    return error_code{err, std::system_category()};
+  }
+};
+} // namespace sockpp
+#endif // __sockpp_result_h

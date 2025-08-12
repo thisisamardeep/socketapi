@@ -1,13 +1,11 @@
 #ifndef __sockpp_sock_address_h
 #define __sockpp_sock_address_h
 
-
 namespace sockpp {
-    class sock_address {
-    public:
-        virtual ~sock_address() noexcept {
-        }
-    };
-}
+class sock_address {
+public:
+  virtual ~sock_address() noexcept {}
+};
+} // namespace sockpp
 
-#endif  // __sockpp_sock_address_h
+#endif // __sockpp_sock_address_h

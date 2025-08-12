@@ -148,7 +148,7 @@ IntegerLiteralSeparator:
   HexMinDigits:    0
 JavaScriptQuotes: Leave
 JavaScriptWrapImports: true
-KeepEmptyLinesAtTheStartOfBlocks: true
+KeepEmptyLinesAtTheStartOfBlocks: false
 KeepEmptyLinesAtEOF: false
 LambdaBodyIndentation: Signature
 LineEnding:      DeriveLF

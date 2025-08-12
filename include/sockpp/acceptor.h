@@ -6,20 +6,17 @@
 #include "sockpp/socket.h"
 
 namespace sockpp {
-    class acceptor : public socket {
-        using base = socket;
+class acceptor : public socket {
+  using base = socket;
 
-    public:
-        static constexpr int DFLT_QUE_SIZE = 4;
-        static constexpr int REUSE = SO_REUSEPORT;
+public:
+  static constexpr int DFLT_QUE_SIZE = 4;
+  static constexpr int REUSE = SO_REUSEPORT;
 
-        acceptor() {
-        }
+  acceptor() {}
 
-        explicit acceptor(socket_t handle) noexcept : base(handle) {
-        }
-    };
-}
+  explicit acceptor(socket_t handle) noexcept : base(handle) {}
+};
+} // namespace sockpp
 
-
-#endif  // __sockpp_acceptor_h
+#endif // __sockpp_acceptor_h
