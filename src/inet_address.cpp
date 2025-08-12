@@ -28,7 +28,7 @@ result<in_addr_t>
 inet_address::resolve_name(const std::string &saddr) noexcept {
   in_addr ia;
   if (::inet_pton(ADDRESS_FAMILY, saddr.c_str(), &ia) == 1) {
-    // return ia.s_addr;
+    return ia.s_addr;
   }
   addrinfo hints = addrinfo{};
   addrinfo *res = nullptr;
@@ -42,7 +42,7 @@ inet_address::resolve_name(const std::string &saddr) noexcept {
     } else {
       ec = make_error_code(static_cast<gai_errc>(err));
     }
-    // return ec;
+    return ec;
   }
   auto ipv4 = reinterpret_cast<sockaddr_in *>(res->ai_addr);
   auto addr = ipv4->sin_addr.s_addr;
@@ -50,5 +50,4 @@ inet_address::resolve_name(const std::string &saddr) noexcept {
   return addr;
 }
 
-int i = 56;
 } // namespace sockpp
