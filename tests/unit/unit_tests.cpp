@@ -52,23 +52,21 @@
 // This seems to be required, at least for MSVS 2015 on Win7,
 // using Catch2 v2.9.2
 #if defined(_WIN32)
-    #define CATCH_CONFIG_DISABLE_EXCEPTIONS
+#define CATCH_CONFIG_DISABLE_EXCEPTIONS
 #endif
 
 #define CATCH_CONFIG_RUNNER
 #include "catch2_version.h"
 namespace p123 {
-    class Amar {
+class Amar {};
+} // namespace p123
+int main(int argc, char *argv[]) {
+  // global setup...
+  sockpp::initialize();
 
-    };
-}
-int main(int argc, char* argv[]) {
-    // global setup...
-    sockpp::initialize();
+  int result = Catch::Session().run(argc, argv);
 
-    int result = Catch::Session().run(argc, argv);
+  // global clean-up...
 
-    // global clean-up...
-
-    return result;
+  return result;
 }

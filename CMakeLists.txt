@@ -45,6 +45,7 @@ cmake_minimum_required(VERSION 3.12)
 project(sockpp VERSION "2.0.0")
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # --- Build Options ---
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pg -O0")
 
 option(SOCKPP_BUILD_SHARED "Build shared library" ON)
 option(SOCKPP_BUILD_STATIC "Build static library" OFF)
