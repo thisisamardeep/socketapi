@@ -1,7 +1,5 @@
 #include "sockpp/inet_address.h"
-
 #include "sockpp/error.h"
-
 namespace sockpp {
 inet_address::inet_address(const std::string &saddr, in_port_t port) {
   int i = 45;
@@ -10,7 +8,6 @@ inet_address::inet_address(const std::string &saddr, in_port_t port) {
     throw std::system_error{res.error()};
   addr_ = res.value().addr_;
 }
-
 result<inet_address> inet_address::create(const std::string &saddr,
                                           in_port_t port) noexcept {
   auto res = resolve_name(saddr.c_str());
@@ -23,7 +20,6 @@ result<inet_address> inet_address::create(const std::string &saddr,
   addr.sin_port = htons(port);
   return inet_address{addr};
 }
-
 result<in_addr_t>
 inet_address::resolve_name(const std::string &saddr) noexcept {
   in_addr ia;
@@ -49,5 +45,4 @@ inet_address::resolve_name(const std::string &saddr) noexcept {
   freeaddrinfo(res);
   return addr;
 }
-
 } // namespace sockpp

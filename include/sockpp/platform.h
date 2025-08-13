@@ -1,6 +1,5 @@
 #ifndef __sockpp_platform_h
 #define __sockpp_platform_h
-#include <netdb.h>
 #include <arpa/inet.h>
 #include <netdb.h>
 #include <netinet/tcp.h> // TCP_NODELAY, etc

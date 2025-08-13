@@ -1,7 +1,7 @@
 #ifndef __sockpp_acceptor_h
 #define __sockpp_acceptor_h
-#include <asm-generic/socket.h>
 #include "sockpp/socket.h"
+#include <asm-generic/socket.h>
 namespace sockpp {
 class acceptor : public socket {
   using base = socket;

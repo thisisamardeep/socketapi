@@ -44,10 +44,10 @@
 // --------------------------------------------------------------------------
 #ifndef __sockpp_can_frame_h
 #define __sockpp_can_frame_h
-#include <linux/can.h>
-#include <cstring>
-#include <string>
 #include "sockpp/platform.h"
+#include <cstring>
+#include <linux/can.h>
+#include <string>
 namespace sockpp {
 /////////////////////////////////////////////////////////////////////////////
 /**
