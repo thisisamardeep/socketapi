@@ -7,6 +7,7 @@
 #include <string>
 using namespace std;
 TEST_CASE("acceptor handle constructor", "[acceptor]") {
+
   constexpr auto HANDLE = sockpp::socket_t(3);
   SECTION("valid handle") {
     sockpp::acceptor sock(HANDLE);
@@ -21,5 +22,6 @@ TEST_CASE("acceptor handle constructor", "[acceptor]") {
 TEST_CASE("acceptor address constructor", "[acceptor]") {
   SECTION("valid address") {
     const auto ADDR = sockpp::inet_address("localhost", sockpp::TEST_PORT);
+    sockpp::acceptor sock{ADDR, 4, sockpp::acceptor::REUSE};
   }
 }
