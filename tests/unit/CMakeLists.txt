@@ -48,7 +48,7 @@ if (Catch2_VERSION VERSION_LESS "3.0")
     add_definitions(-DCATCH2_V2)
     # Put this in if/when deprecating v2.
     #message(DEPRECATION "Catch2 version 2.x is deprecated")
-endif()
+endif ()
 
 # --- For apps that use threads ---
 
@@ -57,26 +57,25 @@ find_package(Threads REQUIRED)
 
 # --- Executables ---
 
-add_executable(unit_tests 
-    unit_tests.cpp
+add_executable(unit_tests
+        unit_tests.cpp
 
-    test_acceptor.cpp
+        test_acceptor.cpp
 
 )
 
-if(UNIX)
+if (UNIX)
     target_sources(unit_tests PUBLIC
     )
-endif()
-
+endif ()
 
 
 # --- Link for executables ---
 
-target_link_libraries(unit_tests 
-    Sockpp::sockpp
-    Catch2::Catch2
-    Threads::Threads
+target_link_libraries(unit_tests
+        Sockpp::sockpp
+        Catch2::Catch2
+        Threads::Threads
 )
 
 include(CTest)

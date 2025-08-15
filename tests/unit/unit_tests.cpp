@@ -2,7 +2,6 @@
 //
 // Main for unit tests.
 //
-
 // --------------------------------------------------------------------------
 // This file is part of the "sockpp" C++ socket library.
 //
@@ -37,38 +36,28 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // --------------------------------------------------------------------------
 //
-
 // Normally, we would just tell Catch2 to define main() like this...
 // This tells Catch to provide a main() - only do this in one cpp file
 // #define CATCH_CONFIG_MAIN
-
 // ...but we need to run the sockpp global initialization before running
 // any of the tests. Defining a main() is described here:
 // https://github.com/catchorg/Catch2/blob/master/docs/own-main.md
 //
-
 #include "sockpp/socket.h"
-
 // This seems to be required, at least for MSVS 2015 on Win7,
 // using Catch2 v2.9.2
 #if defined(_WIN32)
-    #define CATCH_CONFIG_DISABLE_EXCEPTIONS
+#define CATCH_CONFIG_DISABLE_EXCEPTIONS
 #endif
-
 #define CATCH_CONFIG_RUNNER
 #include "catch2_version.h"
 namespace p123 {
-    class Amar {
-
-    };
-}
-int main(int argc, char* argv[]) {
-    // global setup...
-    sockpp::initialize();
-
-    int result = Catch::Session().run(argc, argv);
-
-    // global clean-up...
-
-    return result;
+class Amar {};
+} // namespace p123
+int main(int argc, char *argv[]) {
+  // global setup...
+  sockpp::initialize();
+  int result = Catch::Session().run(argc, argv);
+  // global clean-up...
+  return result;
 }
