@@ -1,0 +1,5 @@
+run udp server single either ipv4 or ipv6
+tell the tcpdump flow.
+tell the strace calls
+tell the object creation
+tell the uftrace.

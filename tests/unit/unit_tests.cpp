@@ -52,12 +52,12 @@
 #define CATCH_CONFIG_RUNNER
 #include "catch2_version.h"
 namespace p123 {
-class Amar {};
+    class Amar {};
 } // namespace p123
 int main(int argc, char *argv[]) {
-  // global setup...
-  sockpp::initialize();
-  int result = Catch::Session().run(argc, argv);
-  // global clean-up...
-  return result;
+    // global setup...
+    sockpp::initialize();
+    int result = Catch::Session().run(argc, argv);
+    // global clean-up...
+    return result;
 }

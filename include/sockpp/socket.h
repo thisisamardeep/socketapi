@@ -31,8 +31,7 @@ namespace sockpp {
         explicit operator bool() const { return handle_ != INVALID_SOCKET; }
         bool is_open() const { return handle_ != INVALID_SOCKET; }
         static result<socket_t> create_handle(int domain, int type, int protocol = 0) noexcept {
-            auto er=socket_t(::socket(domain, type, protocol));
-            return check_socket(er);
+            return check_socket(socket_t(::socket(domain, type, protocol)));
         }
         virtual result<> close();
 

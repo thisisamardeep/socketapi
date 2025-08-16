@@ -21,6 +21,5 @@ namespace sockpp {
             return res;
         }
         return none{};
-
     };
 } // namespace sockpp
