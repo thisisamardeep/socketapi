@@ -166,3 +166,5 @@ if(SOCKPP_BUILD_TESTS)
     add_subdirectory(tests/unit)
 endif()
 
+
+add_subdirectory(examples)
