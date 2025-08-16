@@ -13,6 +13,11 @@ int main(int argc, char *argv[]) {
     in_port_t port = static_cast<in_port_t>(std::strtoul("12345", nullptr, 10));
     sockpp::initialize();
     sockpp::udp_socket udpsock;
+    if (auto res = udpsock.bind(sockpp::inet_address("localhost", port)); !res) {
+        std::cerr << "Error binding the UDP v4 socket: "  << std::endl;
+        return 1;
+    }
+    return 0;
 
     return 0;
 }
