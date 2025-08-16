@@ -23,7 +23,6 @@ namespace sockpp {
         const sockaddr *sockaddr_ptr() const override { return reinterpret_cast<const sockaddr *>(&addr_); }
         sockaddr *sockaddr_ptr() override { return reinterpret_cast<sockaddr *>(&addr_); }
         socklen_t size() const override { return socklen_t(SZ); }
-
     };
 } // namespace sockpp
 #endif // __sockpp_inet_addr_h

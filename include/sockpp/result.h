@@ -14,7 +14,7 @@ namespace sockpp {
 
     public:
         result() = default;
-        result(const T &val) : val_{val} {}
+        result(const T &val) : val_{val} { std::cout << 45; }
         result(T &&val) : val_{std::move(val)} {}
         const T &value() const { return val_; };
         explicit operator bool() const { return !bool(err_); }
@@ -25,6 +25,11 @@ namespace sockpp {
         static int get_last_errno() {
             int err = errno;
             return err;
+        }
+        const T &value_or_throw() const {
+            if (err_)
+                throw std::system_error{err_};
+            return val_;
         }
         static error_code last_error() {
             int err = get_last_errno();

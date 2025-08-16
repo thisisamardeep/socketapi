@@ -50,7 +50,8 @@ endif ()
 if (${SOCKPP_BUILD_SHARED})
     message(STATUS "Creating shared library")
 
-    add_library(sockpp-shared SHARED ${SOURCES})
+    add_library(sockpp-shared SHARED ${SOURCES}
+            ../include/sockpp/datagram_socket.h)
 
     add_library(Sockpp::sockpp-shared ALIAS sockpp-shared)
     add_library(Sockpp::sockpp ALIAS sockpp-shared)

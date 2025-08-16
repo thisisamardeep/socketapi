@@ -26,8 +26,8 @@ namespace sockpp {
 
 
     result<> socket::set_option(int level, int optname, const void *optval, socklen_t optlen) noexcept {
-        ::setsockopt(handle_, level, optname, optval, optlen)            ;
-      return check_res_none(::setsockopt(handle_, level, optname, optval, optlen));
+        ::setsockopt(handle_, level, optname, optval, optlen);
+        return check_res_none(::setsockopt(handle_, level, optname, optval, optlen));
     }
     result<> socket::bind(const sock_address &addr, int reuse) noexcept {
         if (reuse) {
