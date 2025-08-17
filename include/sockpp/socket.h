@@ -34,6 +34,9 @@ namespace sockpp {
             return check_socket(socket_t(::socket(domain, type, protocol)));
         }
         virtual result<> close();
+        socket(socket&& sock) noexcept : handle_{std::move(sock.handle_)} {
+            sock.handle_ = INVALID_SOCKET;
+        }
 
         static result<socket_t> check_socket(socket_t s) {
             if (s == INVALID_SOCKET) {

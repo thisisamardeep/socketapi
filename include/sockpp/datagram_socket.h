@@ -6,7 +6,6 @@ namespace sockpp {
 
     class datagram_socket : public socket {
         using base = socket;
-        // Non-copyable
         datagram_socket(const datagram_socket &) = delete;
         datagram_socket &operator=(const datagram_socket &) = delete;
 
@@ -14,6 +13,8 @@ namespace sockpp {
         static result<socket_t> create_handle(int domain, int protocol = 0) {
             return check_socket(socket_t(::socket(domain, COMM_TYPE, protocol)));
         }
+        datagram_socket(datagram_socket&& other) : base(std::move(other)) {}
+
 
     public:
         static constexpr int COMM_TYPE = SOCK_DGRAM;
@@ -27,6 +28,9 @@ namespace sockpp {
     public:
         static constexpr sa_family_t ADDRESS_FAMILY = ADDR::ADDRESS_FAMILY;
         datagram_socket_tmpl() : base(create_handle(ADDRESS_FAMILY).value_or_throw()) {};
+        datagram_socket_tmpl(datagram_socket_tmpl&& other) : base(std::move(other)) {
+        }
+
         result<> bind(const ADDR &addr) { return base::bind(addr); }
     };
 
